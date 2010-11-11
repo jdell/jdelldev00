@@ -1,0 +1,5 @@
+D:\dev\src\mxply.net\mxply.net.common\bin\Release\mxply.net.common.dll
+D:\dev\src\mxply.net\mxply.net.common\bin\Release\mxply.net.common.pdb
+D:\dev\src\mxply.net\mxply.net.common\obj\Release\ResolveAssemblyReference.cache
+D:\dev\src\mxply.net\mxply.net.common\obj\Release\mxply.net.common.dll
+D:\dev\src\mxply.net\mxply.net.common\obj\Release\mxply.net.common.pdb
