@@ -5,7 +5,7 @@ using System.Text;
 using System.Reflection;
 using System.ComponentModel;
 
-namespace com.mxply.common.Helpers
+namespace com.mxply.net.common.Helpers
 {
     public abstract class AttributeHelper
     {

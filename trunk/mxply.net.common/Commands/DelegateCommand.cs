@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
-namespace com.mxply.common.Commands
+namespace com.mxply.net.common.Commands
 {
     /// <summary>
     ///     This class allows delegating the commanding logic to methods passed as parameters,
