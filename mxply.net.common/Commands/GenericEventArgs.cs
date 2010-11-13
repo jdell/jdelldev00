@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace com.mxply.common.Commands
+namespace com.mxply.net.common.Commands
 {
     public class GenericEventArgs<T> : System.EventArgs
     {

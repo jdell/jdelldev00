@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace com.mxply.common
+namespace com.mxply.net.common.Core
 {
     public class ViewModelBase:INotifyPropertyChanged
     {
