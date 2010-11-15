@@ -45,11 +45,13 @@ namespace com.mxply.net.common.Core
                 _systemAction = value;
             }
         }
-
-        public object execute(BaseCache context)
+        protected ICache Cache { get; set; }
+        public object execute(ICache cache)
         {
             try
             {
+                this.Cache = cache;
+
                 //  if ((!SystemAction)) //&& (_common.cache.MANTENIMIENTO != null) && (_common.cache.MANTENIMIENTO.EnMantenimiento))
                 //  throw new _exceptions.common.OutOfServiceException("Aplicación fuera de servicio en estos momentos. Inténtelo más tarde.");
 

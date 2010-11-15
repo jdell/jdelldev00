@@ -55,6 +55,7 @@
     <Compile Include="Core\ProgressEventArgs.cs" />
     <Compile Include="Exceptions\AccessNotAllowedException.cs" />
     <Compile Include="Exceptions\BaseException.cs" />
+    <Compile Include="Exceptions\MissingIdException.cs" />
     <Compile Include="Exceptions\NullReferenceException.cs" />
     <Compile Include="Exceptions\ValidatingException.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
