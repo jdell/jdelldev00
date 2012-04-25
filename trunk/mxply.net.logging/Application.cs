@@ -48,8 +48,7 @@ namespace com.mxply.net.logging
                         CfgUtils.CheckLog4Net(ApplicationRootPath);
                         LogUtil.Manager.Info("***** Carga Aplicación - Servicio [" + ServiceName + "]*****");
                         //TODO: obtener el valor de endpoints del nodo client de web.config y comprobar si la url del site es la misma que en la que estamos en runtime y si no lo es cambiarla.
-                        //Ej.<endpoint address="http://localhost:1230/Xunta.Portafirmas.Services.Web/SignService.svc" .... y vemos que estamos en http:://localhost:80, cambiamos en web.config http://localhost:80/Xunta.Portafirmas.Services.Web/SignService.svc
-                        // ej. de como cmabiar algo en web.config http://stackoverflow.com/questions/2260317/change-a-web-config-programmatically-with-c-sharp-net
+                      // ej. de como cmabiar algo en web.config http://stackoverflow.com/questions/2260317/change-a-web-config-programmatically-with-c-sharp-net
                     }
                 }
             }
