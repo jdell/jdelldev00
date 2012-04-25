@@ -8,21 +8,19 @@ namespace com.mxply.net.common.Extensions
 {
     public static class StreamExtension
     {
-        public static void CopyTo(this Stream source, Stream target)  
+        private const long BUFFER_SIZE = 4096;
+        public static long CopyTo(this Stream input, Stream output)
         {
-            CopyTo(source, target, 1024);  
-        }
-
-        public static void CopyTo(this Stream source, Stream target, int bufferLength)  
-        {  
-            byte[] buffer = new byte[bufferLength];  
-            int bytesRead = 0;  
-  
-            do  
-            {  
-                bytesRead = source.Read(buffer, 0, buffer.Length);  
-                target.Write(buffer, 0, bytesRead);  
-            } while (bytesRead > 0);  
+            long bufferSize = input.Length < BUFFER_SIZE ? input.Length : BUFFER_SIZE;
+            byte[] buffer = new byte[bufferSize];
+            int read;
+            long written = 0;
+            while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                output.Write(buffer, 0, read);
+                written += read;
+            }
+            return written;
         }
     }
 }
