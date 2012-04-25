@@ -31,7 +31,10 @@ namespace com.mxply.net.logging
         private Application()
         {
         }
-
+        public void Initialize(string serviceName)
+        {
+            Initialize(Config.VirtualPath, serviceName);
+        }
         public void Initialize(string ApplicationRootPath, string ServiceName)
         {
             if (!initialized)
