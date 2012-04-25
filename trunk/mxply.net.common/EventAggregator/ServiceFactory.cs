@@ -20,15 +20,18 @@ namespace com.mxply.net.common.EventAggregator
             {
                 // Lock execution thread in case of multi-threaded
                 // (concurrent) access.
-                lock (_syncRoot)
+                if (null == eventService)
                 {
-                    if (null == eventService)
+                    lock (_syncRoot)
                     {
-                        eventService = new Microsoft.Practices.Composite.Events.EventAggregator();
-                    }
-                    // Return singleton instance
-                    return eventService;
-                } // lock
+                        if (null == eventService)
+                        {
+                            eventService = new Microsoft.Practices.Composite.Events.EventAggregator();
+                        }
+                    } // lock
+                }
+                // Return singleton instance
+                return eventService;
             }
         }
     }
