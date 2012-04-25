@@ -48,6 +48,7 @@
     <Compile Include="Commands\CommandReference.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\GenericEventArgs.cs" />
+    <Compile Include="Converts\BooleanToVisibility.cs" />
     <Compile Include="Core\ActionBL.cs" />
     <Compile Include="Core\ICache.cs" />
     <Compile Include="Core\ILoggable.cs" />
