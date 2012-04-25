@@ -5,6 +5,7 @@ using System.Text;
 using System.Configuration;
 using System.IO;
 using log4net;
+using System.Diagnostics;
 
 namespace com.mxply.net.logging
 {
@@ -32,6 +33,19 @@ namespace com.mxply.net.logging
             string fullPath = Path.Combine(Path.Combine(ApplicationRootPath, "Config"),
                 ConfigurationManager.AppSettings[CfgUtils.CFGKEY_LOG4NETFILE]);
 
+            string logPath = Path.Combine(ApplicationRootPath, "Logs");
+            if (!Directory.Exists(logPath))
+            {
+                try
+                {
+                    Directory.CreateDirectory(logPath);
+                }
+                catch (Exception ex)
+                {
+                    Trace.TraceError("ApplicationRootPath={0} - LogPath={1} - Error={2}", fullPath, logPath, ex);
+                }
+            }
+
             log4net.Config.XmlConfigurator.Configure(new FileInfo(fullPath));
             _logger = LogManager.GetLogger(ConfigurationManager.AppSettings[CfgUtils.CFGKEY_LOG4NETLOGGERNAME]);
             _initialized = true;
@@ -41,7 +55,10 @@ namespace com.mxply.net.logging
         private void checkInitialized()
         {
             if (!_initialized)
+            {
+                Trace.TraceError(string.Format("No se ha inicializado el componente Log4Net"));
                 throw new System.Exception("No se ha inicializado el componente Log4Net");
+            }
         }
 
         private string setHighLight(object message)
