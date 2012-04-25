@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace com.mxply.net.common.Core
 {
-    public class ViewModelBase:INotifyPropertyChanged
+    public abstract class ViewModelBase:INotifyPropertyChanged
     {
         private string _name = string.Empty;
         public string Name
