@@ -31,6 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.Composite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_dll\Microsoft.Practices.Composite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Composite.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_dll\Microsoft.Practices.Composite.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_dll\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -45,24 +57,40 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\AttachedCommandBehavior\BehaviorBinding.cs" />
+    <Compile Include="Behaviors\AttachedCommandBehavior\CommandBehavior.cs" />
+    <Compile Include="Behaviors\AttachedCommandBehavior\CommandBehaviorBinding.cs" />
+    <Compile Include="Behaviors\AttachedCommandBehavior\CommandBehaviorCollection.cs" />
+    <Compile Include="Behaviors\AttachedCommandBehavior\EventHandlerGenerator.cs" />
+    <Compile Include="Behaviors\AttachedCommandBehavior\ExecutionStrategy.cs" />
+    <Compile Include="Behaviors\AttachedCommandBehavior\SimpleCommand.cs" />
     <Compile Include="Commands\CommandReference.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\GenericEventArgs.cs" />
-    <Compile Include="Converts\BooleanToVisibility.cs" />
+    <Compile Include="Converts\BooleanConverters.cs" />
     <Compile Include="Core\ActionBL.cs" />
     <Compile Include="Core\ICache.cs" />
     <Compile Include="Core\ILoggable.cs" />
     <Compile Include="Core\Message.cs" />
     <Compile Include="Core\ProgressEventArgs.cs" />
+    <Compile Include="EventAggregator\ExtensionServices.cs" />
+    <Compile Include="EventAggregator\GenericEvent.cs" />
+    <Compile Include="EventAggregator\ServiceFactory.cs" />
     <Compile Include="Exceptions\AccessNotAllowedException.cs" />
     <Compile Include="Exceptions\BaseException.cs" />
     <Compile Include="Exceptions\MissingIdException.cs" />
     <Compile Include="Exceptions\NullReferenceException.cs" />
     <Compile Include="Exceptions\ValidatingException.cs" />
+    <Compile Include="Extensions\StreamExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Helpers\AttributeHelper.cs" />
     <Compile Include="Core\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_dll\Microsoft.Practices.Composite.dll" />
+    <Content Include="_dll\Microsoft.Practices.Composite.Wpf.dll" />
+    <Content Include="_dll\Microsoft.Practices.ObjectBuilder2.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
