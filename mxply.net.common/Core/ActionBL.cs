@@ -7,7 +7,7 @@ using System.Transactions;
 
 namespace com.mxply.net.common.Core
 {
-    public abstract class ActionBL
+    public abstract class ActionBL<T>
     {
         protected abstract string GetConnectionName();
         protected string ConnectionName
@@ -46,7 +46,7 @@ namespace com.mxply.net.common.Core
             }
         }
         protected ICache Cache { get; set; }
-        public object execute(ICache cache)
+        public T execute(ICache cache)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace com.mxply.net.common.Core
                 if (!IsAllowed)
                     throw new Exceptions.AccessNotAllowedException();
 
-                object res = null;
+                T res;// = null;
                 using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required))
                 {
                     res = action();
