@@ -4,9 +4,28 @@ using System.Linq;
 using System.Text;
 
 using System.Transactions;
+using com.mxply.net.common.Exceptions;
 
 namespace com.mxply.net.common.Core
 {
+    public class Error
+    {
+        public static Error From(Exception ex)
+        {
+            Error res = new Error();
+            res.Message = ex.Message;
+            res.InnerException = ex;
+            return res;
+        }
+        public String Message { get; set; }
+        public Exception InnerException { get; private set; }
+    }
+    public class Result<T>
+    {
+        public T Value { get; set; }
+        public Error Error { get; set; }
+        public bool Success { get { return Error == null; } }
+    }
     public abstract class ActionBL<T>
     {
         protected abstract string GetConnectionName();
@@ -46,7 +65,7 @@ namespace com.mxply.net.common.Core
             }
         }
         protected ICache Cache { get; set; }
-        public T execute(ICache cache)
+        public Result<T> execute(ICache cache)
         {
             try
             {
@@ -58,10 +77,17 @@ namespace com.mxply.net.common.Core
                 if (!IsAllowed)
                     throw new Exceptions.AccessNotAllowedException();
 
-                T res;// = null;
+                Result<T> res = new Result<T>();
                 using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required))
                 {
-                    res = action();
+                    try
+                    {
+                        res.Value = action();
+                    }
+                    catch (Exception ex)
+                    {
+                        res.Error = Error.From(ex);
+                    }
 
                     ts.Complete();
                 }
@@ -81,7 +107,7 @@ namespace com.mxply.net.common.Core
                 throw new Exceptions.BaseException(ex);
             }
         }
-        protected abstract object action();
+        protected abstract T action();
 
         protected String ConnectionString
         {
