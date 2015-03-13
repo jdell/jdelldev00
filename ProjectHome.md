@@ -1,0 +1,1 @@
+Base for other projects
